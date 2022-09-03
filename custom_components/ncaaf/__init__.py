@@ -159,7 +159,7 @@ async def async_get_state(config) -> dict:
     if data is not None:
         for event in data["events"]:
             #_LOGGER.debug("Looking at this event: %s" % event)
-            if team_id == event["shortName"]:
+            if team_id in event["shortName"]:
                 _LOGGER.debug("Found event; parsing data.")
                 if event["competitions"][0]["competitors"][0]["team"]["abbreviation"] == team_id: 
                     team_index = 0
