@@ -161,8 +161,17 @@ async def async_get_state(config) -> dict:
             #_LOGGER.debug("Looking at this event: %s" % event)
             if team_id == event["shortName"]:
                 _LOGGER.debug("Found event; parsing data.")
-                found_team = True
-                team_index = 0 if event["competitions"][0]["competitors"][0]["team"]["abbreviation"] == team_id else 1
+                if event["competitions"][0]["competitors"][0]["team"]["abbreviation"] == team_id: 
+                    team_index = 0
+                    found_team = True
+                else:
+                    if event["competitions"][0]["competitors"][0]["team"]["abbreviation"] == team_id:
+                        team_index = 1
+                        found_team = True
+                    else:
+                        found_team = False
+            if found_team == True
+                _LOGGER.debug("Found team; parsing data.")
                 oppo_index = abs((team_index-1))
                 values["state"] = event["status"]["type"]["state"].upper()
                 _LOGGER.debug("State: %s" % (values["state"]))
