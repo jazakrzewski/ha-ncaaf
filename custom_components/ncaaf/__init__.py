@@ -155,9 +155,11 @@ async def async_get_state(config) -> dict:
             if r.status == 200:
                 data = await r.json()
 
-    found_team = False
+    
+    event_data = False
     if data is not None:
         for event in data["events"]:
+            found_team = False
             #_LOGGER.debug("Looking at this event: %s" % event)
             if team_id in event["shortName"]:
                 _LOGGER.debug("Found event; parsing data.")
@@ -280,9 +282,10 @@ async def async_get_state(config) -> dict:
                 values["opponent_score"] = event["competitions"][0]["competitors"][oppo_index]["score"]
                 values["last_update"] = arrow.now().format(arrow.FORMAT_W3C)
                 values["private_fast_refresh"] = False
+                event_data = True
         
         # Never found the team. Either a bye or a post-season condition
-        if not found_team:
+        if not event_data:
             _LOGGER.debug("Did not find a game with for the configured team. Checking if it's a bye week.")
             found_bye = False
             values = await async_clear_states(config)
