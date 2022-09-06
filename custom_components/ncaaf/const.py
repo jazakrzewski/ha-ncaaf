@@ -14,7 +14,7 @@ DEFAULT_TIMEOUT = 120
 
 # Misc
 TEAM_ID = ""
-VERSION = "0.1"
+VERSION = "0.2"
 ISSUE_URL = "https://github.com/jazakrzewski/ha-ncaaf"
 DOMAIN = "ncaaf"
 PLATFORM = "sensor"

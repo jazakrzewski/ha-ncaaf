@@ -57,9 +57,9 @@ The attributes available will change based on the sensor's state, a small number
 
 ### Manually
 
-Clone or download this repository and copy the "nfl" directory to your "custom_components" directory in your config directory
+Clone or download this repository and copy the "ncaaf" directory to your "custom_components" directory in your config directory
 
-```<config directory>/custom_components/nfl/...```
+```<config directory>/custom_components/ncaaf/...```
   
 ### HACS
 
@@ -70,29 +70,29 @@ Clone or download this repository and copy the "nfl" directory to your "custom_c
   
 ## Configuration
 
-You'll need to know your team ID, which is a 2- or 3-letter acronym (eg. "SEA" for Seattle or "NE" for New England). You can find yours at https://espn.com/nfl in the top scores UI. 
+You'll need to know your team ID. You can find your 2, 3 or 4-letter acronym on the ESPN NCAAF page's banner, at the top score strip.
 
 ### Via the "Configuration->Integrations" section of the Home Assistant UI
 
-Look for the integration labeled "NFL" and enter your team's acronym in the UI prompt. You can also enter a friendly name. If you keep the default, your sensor will be `sensor.nfl`, otherwise it will be `sensor.friendly_name_you_picked`. 
+Look for the integration labeled "NCAAF" and enter your team's acronym in the UI prompt. You can also enter a friendly name. If you keep the default, your sensor will be `sensor.nfl`, otherwise it will be `sensor.friendly_name_you_picked`. 
 
 ### Manually in your `configuration.yaml` file
 
 To create a sensor instance add the following configuration to your sensor definitions using the team_id found above:
 
 ```
-- platform: nfl
-  team_id: 'SEA'
+- platform: ncaaf
+  team_id: 'MICH'
 ```
 
-After you restart Home Assistant then you should have a new sensor called `sensor.nfl` in your system.
+After you restart Home Assistant then you should have a new sensor called `sensor.ncaaf` in your system.
 
-You can overide the sensor default name (`sensor.nfl`) to one of your choosing by setting the `name` option:
+You can overide the sensor default name (`sensor.ncaaf`) to one of your choosing by setting the `name` option:
 
 ```
-- platform: nfl
-  team_id: 'SEA'
-  name: Seahawks
+- platform: ncaaf
+  team_id: 'MICH'
+  name: Michigan
 ```
 
-Using the configuration example above the sensor will then be called "sensor.seahawks".
+Using the configuration example above the sensor will then be called "sensor.michigan".
